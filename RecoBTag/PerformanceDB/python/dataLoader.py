@@ -1,5 +1,6 @@
 import itertools
 import ROOT
+ROOT.gROOT.SetBatch()
 try:
     ROOT.BTagEntry
 except AttributeError:

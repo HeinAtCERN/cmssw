@@ -11,6 +11,7 @@ data = None
 check_flavor = True
 check_op = True
 check_sys = True
+check_coverage = True
 verbose = False
 
 
@@ -180,13 +181,14 @@ class BtagCalibConsistencyChecker(unittest.TestCase):
             self.assertLess(b, data.DISCR_MAX + 1e-7)
 
     def test_coverage(self):
-        res = list(itertools.chain.from_iterable(
-            self._check_coverage(op, syst, flav)
-            for flav in data.flavs
-            for syst in data.syss
-            for op in data.ops
-        ))
-        self.assertFalse(bool(res), "\n"+"\n".join(res))
+        if check_coverage:
+            res = list(itertools.chain.from_iterable(
+                self._check_coverage(op, syst, flav)
+                for flav in data.flavs
+                for syst in data.syss
+                for op in data.ops
+            ))
+            self.assertFalse(bool(res), "\n"+"\n".join(res))
 
     def _check_coverage(self, op, syst, flav):
         region = "op=%d, %s, flav=%d" % (op, syst, flav)
