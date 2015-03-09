@@ -11,7 +11,7 @@
 #include "CondCore/DBOutputService/interface/PoolDBOutputService.h"
 #include "CondFormats/BTauObjects/interface/BTagCalibration.h"
 
-class BTagCalibrationDbCreator : public edm::EDAnalyzer
+class BTagCalibrationDbCreator : public edm::one::EDAnalyzer<>
 {
 public:
   BTagCalibrationDbCreator(const edm::ParameterSet&);
