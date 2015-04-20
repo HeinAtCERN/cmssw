@@ -111,8 +111,8 @@ def plot_loader_sys(loader, sys_token):
 def plot_loader(loader):
     res = checker.run_check_data([loader], False, True, False)
     if not all(res):
-        print 'Checks on csv data failed. Exit.'
-        exit(-1)
+        print 'Checks on csv data failed. Trying to plot anyways.' #  Exit.'
+        # exit(-1)
 
     sys_tokens = list(s[2:] for s in loader.syss if s.startswith('up'))
     for tok in sys_tokens:
