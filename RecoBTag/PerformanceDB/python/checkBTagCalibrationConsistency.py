@@ -104,12 +104,12 @@ class BtagCalibConsistencyChecker(unittest.TestCase):
     def test_systematics_doublesidedness(self):
         if check_sys:
             for syst in data.syss:
-                if "up" in syst:
-                    other = syst.replace("up", "down")
+                if syst.startswith('up'):
+                    other = syst.replace("up", "down", 1)
                     self.assertIn(other, data.syss,
                                   "'%s' sys. uncert. is missing" % other)
-                elif "down" in syst:
-                    other = syst.replace("down", "up")
+                elif syst.startswith('down'):
+                    other = syst.replace("down", "up", 1)
                     self.assertIn(other, data.syss,
                                   "'%s' sys. uncert. is missing" % other)
 
